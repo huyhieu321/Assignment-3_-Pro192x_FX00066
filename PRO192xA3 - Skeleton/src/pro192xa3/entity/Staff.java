@@ -13,8 +13,8 @@ import pro192xa3.business.AllowanceCalulator;
  */
 public class Staff extends Employee{
     private String department;
-    private float noOfWorkingDay;//số ngày công
-    private EPosition position;//chức vụ    
+    private float noOfWorkingDay;
+    private EPosition position;
 
     public Staff() {
          
@@ -43,7 +43,7 @@ public class Staff extends Employee{
     public void setPosition(EPosition position) {
         this.position = position;       
     }
-    //sal=Hệ số lương*730+phụ cấp+số ngày công*30;
+    
     @Override
     public float getSalary() {
         float sal;     

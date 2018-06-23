@@ -13,10 +13,9 @@ import pro192xa3.business.AllowanceCalulator;
  */
 public class Teacher extends Employee {
 
-    private String faculty;//khoa
-    private EDegree degree;//trình độ
-    private int teachingHours;//số tiết dạy
-
+    private String faculty;
+    private EDegree degree;
+    private int teachingHours;
     public Teacher() {
         float allowance = AllowanceCalulator.calculateAllowance((this));
         this.setAllowance(allowance);
@@ -45,7 +44,6 @@ public class Teacher extends Employee {
     public void setTeachingHours(int teachingHours) {
         this.teachingHours = teachingHours;
     }
-    //sal=Hệ số lương*730+phụ cấp+số tiết dạy*45.
     @Override
     public float getSalary() {
         float sal;

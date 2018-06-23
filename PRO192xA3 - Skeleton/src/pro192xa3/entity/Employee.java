@@ -11,9 +11,8 @@ package pro192xa3.entity;
  */
 public abstract class Employee implements Comparable<Employee> {
     private String fullName;
-    private float salaryRatio;//hệ số lương    
-   
-    private float allowance;//phụ cấp   
+    private float salaryRatio;
+    private float allowance;
     
     public String getFullName() {
         return fullName;

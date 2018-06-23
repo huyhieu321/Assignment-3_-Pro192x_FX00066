@@ -32,12 +32,58 @@ public class PRO192xA3 {
             Staff s = new Staff();
             //input staff details
             //your code
+            System.out.print("Name: ");
+            String name = scan.nextLine();
+            s.setFullName(name);
+            
+            System.out.print("Salary Ratio: ");
+            float salaryRatio = scan.nextFloat();
+            s.setSalaryRatio(salaryRatio);
+           
+            System.out.print("Department: ");
+            String department = scan.nextLine();
+            s.setDepartment(department);    
+            
+            System.out.print("Position (1= HEAD; 2=VICE_HEAD; 3=STAFF): ");
+            int position_no = scan.nextInt();
+            switch(position_no) {
+            case 1: s.setPosition(EPosition.HEAD); break;
+            case 2: s.setPosition(EPosition.VICE_HEAD);break;
+            case 3: s.setPosition(EPosition.STAFF);break;
+            }
+            System.out.print("Number of working days: ");
+            int noOfWorkingDay = scan.nextInt();
+            s.setNoOfWorkingDay(noOfWorkingDay);          
+            
             return s;
 
         } else {
             Teacher t = new Teacher();
             //inputs Teacher details
             //your code
+            System.out.print("Name: ");
+            String name = scan.nextLine();
+            t.setFullName(name);
+            
+            System.out.print("Salary Ratio: ");
+            float salaryRatio = scan.nextFloat();
+            t.setSalaryRatio(salaryRatio);
+           
+            System.out.print("Faculity: ");
+            String faculty = scan.nextLine();
+            t.setFaculty(faculty); 
+            
+            System.out.print("Position (1= BACHELOR; 2=MASTER; 3=DOCTOR): ");
+            int degree = scan.nextInt();
+            switch(degree) {            
+            case 1: t.setDegree(EDegree.BACHELOR); break;
+            case 2: t.setDegree(EDegree.MASTER);break;
+            case 3: t.setDegree(EDegree.DOCTOR);break;
+            }
+            System.out.print("Number of teaching hours: ");
+            int teachingHours = scan.nextInt();
+            t.setTeachingHours(teachingHours);
+            
             return t;
         }
 
