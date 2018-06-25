@@ -16,10 +16,16 @@ public class Teacher extends Employee {
     private String faculty;
     private EDegree degree;
     private int teachingHours;
+    
     public Teacher() {
+    	super();
         float allowance = AllowanceCalulator.calculateAllowance((this));
         this.setAllowance(allowance);
     }
+    /* This is constructor for faster testing*/
+//    public Teacher(String fullName, float salaryRatio, float allowance) {
+//        super(fullName, salaryRatio, allowance);
+//   }
 
     public String getFaculty() {
         return faculty;

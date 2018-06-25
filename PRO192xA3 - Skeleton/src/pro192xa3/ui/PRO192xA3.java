@@ -39,7 +39,9 @@ public class PRO192xA3 {
             System.out.print("Salary Ratio: ");
             float salaryRatio = scan.nextFloat();
             s.setSalaryRatio(salaryRatio);
-           
+            
+            scan.nextLine(); // Avoid skip to Position because nextFloat() appears before nextLine() 
+            
             System.out.print("Department: ");
             String department = scan.nextLine();
             s.setDepartment(department);    
@@ -68,7 +70,9 @@ public class PRO192xA3 {
             System.out.print("Salary Ratio: ");
             float salaryRatio = scan.nextFloat();
             t.setSalaryRatio(salaryRatio);
-           
+            
+            scan.nextLine(); // Avoid skip to Position because nextFloat() appears before nextLine() 
+            
             System.out.print("Faculity: ");
             String faculty = scan.nextLine();
             t.setFaculty(faculty); 
@@ -90,21 +94,17 @@ public class PRO192xA3 {
     }
 
     //display a list of employee
-    static void display(ArrayList<Employee> listE) {
+    static void display(ArrayList<Employee> list) {
         System.out.println("Results:");
         System.out.println("Name, Fac/Dept, Deg/Pos, Sal Ratio, Allowance, T.Hours/W.Days, Salary");
-        for (Employee e : listE) {
-            System.out.println(e);
+        for (Employee e : list) {
+            System.out.println(e.toString());
         }
     }
-
-    public static void main(String[] args) {
-        // create employee management object
-        EmployeeManagement empMan = new EmployeeManagement();
-        //menu
-        Scanner scan = new Scanner(System.in);
-        boolean keepRunning = true;
-        while (keepRunning) {
+    
+    private static int selectMenu(int choice, Scanner scan) {
+        choice = -1;
+        while (choice > 5 || choice < 1) {
             System.out.println("University Staff Management 1.0");
             System.out.println("\t1.Add staff");
             System.out.println("\t2.Search staff by name");
@@ -112,13 +112,36 @@ public class PRO192xA3 {
             System.out.println("\t4.Display all staff");
             System.out.println("\t5.Exit");
             System.out.print("Select function (1,2,3,4 or 5): ");
-            int choice = scan.nextInt();
+            if (scan.hasNextInt()) {
+            	choice = scan.nextInt();
+            } else {
+            	scan.next();
+            }
+        }
+        return choice;
+    }
+    
+    public static void main(String[] args) {
+        // create employee management object
+        EmployeeManagement empMan = new EmployeeManagement();
+        //menu
+        boolean keepRunning = true;
+        Scanner scan = new Scanner(System.in);
+        int choice = -1;
+        while (keepRunning) {
+        	choice = selectMenu(choice, scan);
             switch (choice) {
                 case 1://add staff/teacher    
                     Employee emp = createNewImployee();
                     float allowance = AllowanceCalulator.calculateAllowance(emp);
                     emp.setAllowance(allowance);
                     empMan.addEmployee(emp);
+                  /* Make a example Array List for more faster testing */
+//                	  empMan.addEmployee(new Staff("Huy", 1, 2));
+//                	  empMan.addEmployee(new Staff("Hieu", 2, 3));
+//                	  empMan.addEmployee(new Teacher("Quang", 4, 5));
+//                	  empMan.addEmployee(new Teacher("Hoang", 6, 7));
+                	  choice = -1;
                     break;
                 case 2://search by name                    
                     System.out.print("\tEnter name to search: ");
@@ -126,21 +149,25 @@ public class PRO192xA3 {
                     String name = scan.nextLine();
                     ArrayList<Employee> foundByName = empMan.searchByName(name);
                     display(foundByName);
+                    choice = -1;
                     break;
-                case 3://search by dept
+                case 3://search by department
                     System.out.print("\tEnter dept/fac to search: ");
                     scan = new Scanner(System.in);
                     String dept = scan.nextLine();
                     ArrayList<Employee> foundByDept = empMan.searchByDept(dept);
                     display(foundByDept);
+                    choice = -1;
                     break;
                 case 4://display all
                     ArrayList<Employee> listE = empMan.listAll();
                     display(listE);
+                    choice = -1;
                     break;
                 case 5://exit
                     keepRunning = false;
             }
         }
     }
+
 }

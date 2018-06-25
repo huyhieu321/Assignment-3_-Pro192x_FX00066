@@ -17,8 +17,14 @@ public class Staff extends Employee{
     private EPosition position;
 
     public Staff() {
-         
+    	super();
+        float allowance = AllowanceCalulator.calculateAllowance((this));
+        this.setAllowance(allowance);
     }
+    /* this is constructor for faster testing*/
+//    public Staff(String fullName, float salaryRatio, float allowance) {
+//         super(fullName, salaryRatio, allowance);
+//    }
 
     public String getDepartment() {
         return department;

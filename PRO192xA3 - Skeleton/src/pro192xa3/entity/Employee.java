@@ -14,7 +14,17 @@ public abstract class Employee implements Comparable<Employee> {
     private float salaryRatio;
     private float allowance;
     
-    public String getFullName() {
+    public Employee() {
+	}
+
+    public Employee(String fullName, float salaryRatio, float allowance) {
+    	this.fullName = fullName;
+    	this.salaryRatio = salaryRatio;
+    	this.allowance = allowance;
+    }
+
+
+	public String getFullName() {
         return fullName;
     }
 
@@ -41,6 +51,14 @@ public abstract class Employee implements Comparable<Employee> {
     public abstract float getSalary();
     @Override
     public int compareTo(Employee emp){
-        return this.fullName.compareTo(emp.fullName);
+		if (this instanceof Staff && emp instanceof Teacher) {
+			return -1;
+		} else if (this instanceof Teacher && emp instanceof Staff	 ) {
+			return 1;
+		} else {
+			return (this.getFullName().compareTo(emp.getFullName()));
+		}
     }
+
+     
 }
