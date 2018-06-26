@@ -47,8 +47,10 @@ public abstract class Employee implements Comparable<Employee> {
     public void setAllowance(float allowance) {
         this.allowance = allowance;
     } 
-    
+  
     public abstract float getSalary();
+    
+    /*Declaration compareTo()*/
     @Override
     public int compareTo(Employee emp){
 		if (this instanceof Staff && emp instanceof Teacher) {
@@ -58,6 +60,7 @@ public abstract class Employee implements Comparable<Employee> {
 		} else {
 			return (this.getFullName().compareTo(emp.getFullName()));
 		}
+		
     }
 
      

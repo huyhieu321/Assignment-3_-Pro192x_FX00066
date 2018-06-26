@@ -31,68 +31,77 @@ public class PRO192xA3 {
         if (choice.equalsIgnoreCase("s")) {
             Staff s = new Staff();
             //input staff details
-            //your code
-            System.out.print("Name: ");
-            String name = scan.nextLine();
-            s.setFullName(name);
             
-            System.out.print("Salary Ratio: ");
-            float salaryRatio = scan.nextFloat();
+            /*****************STAFF NAME***************/
+            String name = "";
+            name = checkInput(scan,"Name: ",name);
+            s.setFullName(name);
+            /***************STAFF SALARY RATIO**************/
+            float salaryRatio=0;
+            salaryRatio = checkInput(scan,"Salary Ratio: ", salaryRatio);
             s.setSalaryRatio(salaryRatio);
             
             scan.nextLine(); // Avoid skip to Position because nextFloat() appears before nextLine() 
+            /*************STAFF DEPARTMENT***********/
+            String department="";
+            checkInput(scan,"Department: ",department);
+            s.setDepartment(department);
             
-            System.out.print("Department: ");
-            String department = scan.nextLine();
-            s.setDepartment(department);    
-            
-            System.out.print("Position (1= HEAD; 2=VICE_HEAD; 3=STAFF): ");
-            int position_no = scan.nextInt();
+            /*********STAFF POSTION**********/
+            int position_no=0;
+            while(position_no> 3 || position_no <1) {
+            	position_no = checkInput(scan,"Position (1= HEAD; 2=VICE_HEAD; 3=STAFF): ",position_no);
+            }
             switch(position_no) {
             case 1: s.setPosition(EPosition.HEAD); break;
             case 2: s.setPosition(EPosition.VICE_HEAD);break;
             case 3: s.setPosition(EPosition.STAFF);break;
             }
-            System.out.print("Number of working days: ");
-            int noOfWorkingDay = scan.nextInt();
-            s.setNoOfWorkingDay(noOfWorkingDay);          
-            
+            /*********STAFF WORKING DAYS***********/
+            int noOfWorkingDay=0;
+            noOfWorkingDay = checkInput(scan,"Number of working days: ",noOfWorkingDay);
+            s.setNoOfWorkingDay(noOfWorkingDay);
             return s;
 
         } else {
             Teacher t = new Teacher();
             //inputs Teacher details
             //your code
-            System.out.print("Name: ");
-            String name = scan.nextLine();
+
+            /*****************TEACHER NAME***************/
+            String name="";
+            name = checkInput(scan,"Name: ",name);
             t.setFullName(name);
-            
-            System.out.print("Salary Ratio: ");
-            float salaryRatio = scan.nextFloat();
+            /***************TEACHER SALARY RATIO**************/
+            float salaryRatio=0; 
+            salaryRatio = checkInput(scan,"Salary Ratio: ",salaryRatio);
             t.setSalaryRatio(salaryRatio);
             
             scan.nextLine(); // Avoid skip to Position because nextFloat() appears before nextLine() 
-            
-            System.out.print("Faculity: ");
-            String faculty = scan.nextLine();
+            /***************TEACHER FACULTY**************/
+            String faculty="";
+            faculty = checkInput(scan,"Faculty: ",faculty);
             t.setFaculty(faculty); 
-            
-            System.out.print("Position (1= BACHELOR; 2=MASTER; 3=DOCTOR): ");
-            int degree = scan.nextInt();
-            switch(degree) {            
+            /***************TEACHER DEGREE*************/
+            int degree_no=0;
+            while(degree_no> 3 || degree_no <1) {
+         	   degree_no = checkInput(scan,"Position (1= BACHELOR; 2=MASTER; 3=DOCTOR): ",degree_no);
+            }
+            switch(degree_no) {            
             case 1: t.setDegree(EDegree.BACHELOR); break;
             case 2: t.setDegree(EDegree.MASTER);break;
             case 3: t.setDegree(EDegree.DOCTOR);break;
             }
-            System.out.print("Number of teaching hours: ");
-            int teachingHours = scan.nextInt();
+            /***************TEACHER TEACHHING HOURS**************/
+            int teachingHours=0;
+            teachingHours = checkInput(scan,"Number of teaching hours: ",teachingHours);
             t.setTeachingHours(teachingHours);
             
             return t;
         }
 
     }
-
+  
     //display a list of employee
     static void display(ArrayList<Employee> list) {
         System.out.println("Results:");
@@ -120,7 +129,40 @@ public class PRO192xA3 {
         }
         return choice;
     }
-    
+    private static float checkInput(Scanner scan,String printString,float setString) {
+     	boolean flag = true;
+    	while(flag == true) {
+    		System.out.print(printString);
+    		if(scan.hasNextFloat()) {    			
+    			setString = scan.nextFloat();
+    			flag = false;
+    		}
+    		else {
+    			scan.next();
+    		}
+    	}
+    	return setString;
+    }
+    private static int checkInput(Scanner scan,String printString,int setString) {
+    	boolean flag = true;
+    	while(flag == true) {
+    		System.out.print(printString);
+    		if(scan.hasNextInt()) {    			
+    			setString = scan.nextInt();
+    			flag = false;
+    		}
+    		else {
+    			scan.next();
+    		}
+    	}
+    	return setString;
+    }
+    private static String checkInput(Scanner scan,String printString,String setString) {
+    	System.out.print(printString);
+    	return scan.nextLine();
+    }
+   
+    /**************************************************MAIN********************************************************************/
     public static void main(String[] args) {
         // create employee management object
         EmployeeManagement empMan = new EmployeeManagement();
@@ -129,7 +171,7 @@ public class PRO192xA3 {
         Scanner scan = new Scanner(System.in);
         int choice = -1;
         while (keepRunning) {
-        	choice = selectMenu(choice, scan);
+        	choice = selectMenu(choice, scan);  // change originally code more visible
             switch (choice) {
                 case 1://add staff/teacher    
                     Employee emp = createNewImployee();
@@ -171,3 +213,4 @@ public class PRO192xA3 {
     }
 
 }
+
