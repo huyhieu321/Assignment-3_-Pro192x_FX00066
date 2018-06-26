@@ -189,6 +189,7 @@ public class PRO192xA3 {
                     System.out.print("\tEnter name to search: ");
                     scan = new Scanner(System.in);
                     String name = scan.nextLine();
+                    
                     ArrayList<Employee> foundByName = empMan.searchByName(name);
                     display(foundByName);
                     choice = -1;

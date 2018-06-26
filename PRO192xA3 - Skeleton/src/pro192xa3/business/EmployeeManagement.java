@@ -47,6 +47,7 @@ public class EmployeeManagement {
         	if(emp.getFullName().equalsIgnoreCase(name)) {
         		empFound.add(emp);
         	}
+        	else System.out.println("This name is not exist in list! ");
         }
         return empFound;
     }
@@ -61,12 +62,15 @@ public class EmployeeManagement {
     	        	if(((Staff) emp).getDepartment().equalsIgnoreCase(dept)) {
     	        		empFound.add(emp);
     	        	}
+    	        	else System.out.println("This department is not exist in list! ");
     	        }
-    		   if (emp instanceof Teacher) {
+    		   else if (emp instanceof Teacher) {
     				if(((Teacher) emp).getFaculty().equalsIgnoreCase(dept)) {
     	        		empFound.add(emp);
     	        	}
+    				else System.out.println("This faculty is not exist in list! ");
     		   }
+    		   
     	}     
         return empFound;
     }
