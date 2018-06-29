@@ -187,9 +187,9 @@ public class PRO192xA3 {
                     break;
                 case 2://search by name                    
                     System.out.print("\tEnter name to search: ");
-                    scan = new Scanner(System.in);
-                    String name = scan.nextLine();
-                    
+//                    scan = new Scanner(System.in);
+//                    String name = scan.nextLine();
+                    String name = "huy";
                     ArrayList<Employee> foundByName = empMan.searchByName(name);
                     display(foundByName);
                     choice = -1;
