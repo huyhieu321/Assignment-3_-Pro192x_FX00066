@@ -100,6 +100,10 @@ public class EmployeeManagement {
     }
     //search by staff/teacher's name
     public ArrayList<Employee> searchByName(String name) {
+    	if (listE.isEmpty()) {
+    		return null;
+    	}
+    	
         //store all matching staff or teacher
         ArrayList<Employee> empFound = new ArrayList<>();
         //your code

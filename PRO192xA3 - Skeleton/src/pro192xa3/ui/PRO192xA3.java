@@ -104,6 +104,10 @@ public class PRO192xA3 {
   
     //display a list of employee
     static void display(ArrayList<Employee> list) {
+    	if (list == null) {
+    		System.out.println("Employee List is empty");
+    		return;
+    	}
         System.out.println("Results:");
         System.out.println("Name, Fac/Dept, Deg/Pos, Sal Ratio, Allowance, T.Hours/W.Days, Salary");
         for (Employee e : list) {
@@ -187,9 +191,8 @@ public class PRO192xA3 {
                     break;
                 case 2://search by name                    
                     System.out.print("\tEnter name to search: ");
-//                    scan = new Scanner(System.in);
-//                    String name = scan.nextLine();
-                    String name = "huy";
+                    scan = new Scanner(System.in);
+                    String name = scan.nextLine();
                     ArrayList<Employee> foundByName = empMan.searchByName(name);
                     display(foundByName);
                     choice = -1;
