@@ -5,6 +5,9 @@
  */
 package pro192xa3.ui;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import jdk.nashorn.internal.parser.Lexer;
@@ -101,7 +104,7 @@ public class PRO192xA3 {
         }
 
     }
-  
+   static String linkfile = "PRO192xA3 - Skeleton/data.txt";
     //display a list of employee
     static void display(ArrayList<Employee> list) {
     	if (list == null) {
@@ -110,6 +113,30 @@ public class PRO192xA3 {
     	}
         System.out.println("Results:");
         System.out.println("Name, Fac/Dept, Deg/Pos, Sal Ratio, Allowance, T.Hours/W.Days, Salary");
+        
+        /* read data from file data.txt */
+        System.out.println("This data is on data.txt file");
+        BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(linkfile));
+			String line;
+			while ((line = br.readLine()) != null){
+				System.out.println(line);
+			}
+			
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				br.close();
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("This data is just use for this session");
         for (Employee e : list) {
             System.out.println(e.toString());
         }
@@ -128,6 +155,7 @@ public class PRO192xA3 {
             if (scan.hasNextInt()) {
             	choice = scan.nextInt();
             } else {
+            	System.out.println("Input is not accepted, Please retype!");
             	scan.next();
             }
         }
@@ -142,6 +170,7 @@ public class PRO192xA3 {
     			flag = false;
     		}
     		else {
+    			System.out.println("Input is not accepted, Please retype!");
     			scan.next();
     		}
     	}
@@ -156,6 +185,7 @@ public class PRO192xA3 {
     			flag = false;
     		}
     		else {
+    			System.out.println("Input is not accepted, Please retype!");
     			scan.next();
     		}
     	}

@@ -29,6 +29,7 @@ public class EmployeeManagement {
     
     public EmployeeManagement() {        
         listE = new ArrayList<>();
+        /*Loading file data.txt*/
        	try {
     		File file = new File(linkFile);
     		if(!file.exists()) {
@@ -43,6 +44,7 @@ public class EmployeeManagement {
     		e.printStackTrace();
 		}
     }
+    // LoadData from file
     public void load(String fileName) throws IOException,FileNotFoundException {
     		BufferedReader br = null;
     		try {
@@ -51,6 +53,7 @@ public class EmployeeManagement {
     			while ((line = br.readLine()) != null){
     				System.out.println(line);
     			}
+    			
     		}
     		catch (IOException e) {
     			e.printStackTrace();
@@ -144,6 +147,8 @@ public class EmployeeManagement {
     public ArrayList<Employee> listAll() {
         //sort the list of staff/teacher before return
         //your code
+  	   	
+    	// sort data
     	 Collections.sort(listE);
 
         return listE;

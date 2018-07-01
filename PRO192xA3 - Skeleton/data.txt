@@ -1,2 +1,4 @@
 
 Staff, huy, , VICE_HEAD, 3.0, 1000.0, 2.0, 3250.0
+Staff, Huy, , HEAD, 3.0, 2000.0, 3.0, 4280.0
+Teacher, Hieu, Eng, MASTER, 3.0, 500.0, 30, 4040.0
