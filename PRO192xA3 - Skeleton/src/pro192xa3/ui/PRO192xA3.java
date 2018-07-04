@@ -51,11 +51,11 @@ public class PRO192xA3 {
             s.setDepartment(department);
             
             /*********STAFF POSTION**********/
-            int position_no=0;
-            while(position_no> 3 || position_no <1) {
-            	position_no = checkInput(scan,"Position (1= HEAD; 2=VICE_HEAD; 3=STAFF): ",position_no);
+            int positionNo=0;
+            while(positionNo> 3 || positionNo <1) {
+            	positionNo = checkInput(scan,"Position (1= HEAD; 2=VICE_HEAD; 3=STAFF): ",positionNo);
             }
-            switch(position_no) {
+            switch(positionNo) {
             case 1: s.setPosition(EPosition.HEAD); break;
             case 2: s.setPosition(EPosition.VICE_HEAD);break;
             case 3: s.setPosition(EPosition.STAFF);break;
@@ -86,11 +86,11 @@ public class PRO192xA3 {
             faculty = checkInput(scan,"Faculty: ",faculty);
             t.setFaculty(faculty); 
             /***************TEACHER DEGREE*************/
-            int degree_no=0;
-            while(degree_no> 3 || degree_no <1) {
-         	   degree_no = checkInput(scan,"Position (1= BACHELOR; 2=MASTER; 3=DOCTOR): ",degree_no);
+            int degreeNo=0;
+            while(degreeNo> 3 || degreeNo <1) {
+         	   degreeNo = checkInput(scan,"Position (1= BACHELOR; 2=MASTER; 3=DOCTOR): ",degreeNo);
             }
-            switch(degree_no) {            
+            switch(degreeNo) {            
             case 1: t.setDegree(EDegree.BACHELOR); break;
             case 2: t.setDegree(EDegree.MASTER);break;
             case 3: t.setDegree(EDegree.DOCTOR);break;

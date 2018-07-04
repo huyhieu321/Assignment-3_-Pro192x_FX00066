@@ -27,6 +27,7 @@ public class AllowanceCalulator {
     vice-head / 1000
     staff    / 500
     */
+	/*Set allowance for each type of Employee*/
     public static float calculateAllowance(Employee emp){        
         float allowance=0;
         if(emp instanceof Staff){
